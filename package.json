@@ -1,0 +1,15 @@
+{
+  "name": "simple-sample",
+  "version": "0.0.1",
+  "description": "",
+  "exports": "./dist/index.js",
+  "type": "module",
+  "scripts": {
+    "build": "rollup -c"
+  },
+  "author": "Takashi Kato <ny@cosmichorror.org>",
+  "license": "MIT",
+  "devDependencies": {
+    "rollup": "^4.20.0"
+  }
+}
