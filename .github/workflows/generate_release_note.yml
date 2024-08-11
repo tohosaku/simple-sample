@@ -5,12 +5,30 @@ on:
     tags:
       - '*'
 jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+      - name: Install dependencies
+        run: npm install
+      - name: Generate Libraries
+        run: npm run build
+      - name: Upload artifact for Release
+        uses: actions/upload-artifact@v4
+        with:
+          path: ./dist
+          name: simple-sample
+          retention-days: 1
   release:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
-        uses: actions/checkout@v4
+      - name: Download Artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: simple-sample
       - name: Generate release note
         uses: softprops/action-gh-release@v2
         with:
           generate_release_notes: true
+          files: simple-sample
