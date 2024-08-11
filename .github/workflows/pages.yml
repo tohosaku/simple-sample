@@ -2,7 +2,7 @@ name: Deploy modules to GitHub Pages.
 on:
   push:
     branches:
-        - '**'
+        - master
 permissions:
   pages: write
   id-token: write
