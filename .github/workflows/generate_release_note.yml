@@ -17,7 +17,7 @@ jobs:
       - name: Upload artifact for Release
         uses: actions/upload-artifact@v4
         with:
-          path: ./dist
+          path: ./dist/
           name: simple-sample
           retention-days: 1
   release:
