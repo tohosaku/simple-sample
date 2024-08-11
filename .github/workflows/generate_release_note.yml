@@ -19,7 +19,7 @@ jobs:
         with:
           type: 'zip'
           filename: 'simple-sample.zip'
-          path: './dist/'
+          directory: './dist/'
       - name: Generate release note
         uses: softprops/action-gh-release@v2
         with:
