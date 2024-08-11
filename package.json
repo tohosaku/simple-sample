@@ -1,6 +1,6 @@
 {
   "name": "simple-sample",
-  "version": "0.0.2",
+  "version": "0.0.4",
   "description": "",
   "exports": "./dist/index.js",
   "type": "module",
