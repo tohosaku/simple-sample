@@ -18,7 +18,9 @@ jobs:
         run: npm install
       - name: Generate Libraries
         run: npm run build
-      - name: Archive Release
+      - name: Generate Release Note
+        run: npm run release_note > ${{ github.workspace }}-CHANGELOG.txt
+       - name: Archive Release
         uses: thedoctor0/zip-release@0.7.6
         with:
           type: 'zip'
@@ -27,5 +29,6 @@ jobs:
       - name: Generate release note
         uses: softprops/action-gh-release@v2
         with:
+          body_path: ${{ github.workspace }}-CHANGELOG.txt
           generate_release_notes: true
           files: "dist/simple-sample-${{ env.VERSION }}.zip"

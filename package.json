@@ -1,15 +1,17 @@
 {
   "name": "simple-sample",
-  "version": "0.0.6",
+  "version": "0.0.11",
   "description": "",
   "exports": "./dist/index.js",
   "type": "module",
   "scripts": {
-    "build": "rollup -c"
+    "build": "rollup -c",
+    "release_note": "conventional-changelog -u -r 1 -n .changelog.mjs"
   },
   "author": "Takashi Kato <ny@cosmichorror.org>",
   "license": "MIT",
   "devDependencies": {
-    "rollup": "^4.20.0"
+    "rollup": "^4.40.1",
+    "conventional-changelog-cli": "^5.0.0"
   }
 }
