@@ -14,18 +14,15 @@ jobs:
           echo ${{ github.ref_name }} | sed -e 's/^v//' | xargs -I {} echo "VERSION={}" >> "$GITHUB_ENV"
       - name: Checkout repository
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          fetch-tags: 'true'
       - name: Install dependencies
         run: npm install
       - name: Generate Libraries
         run: npm run build
       - name: Generate a changelog
-        uses: orhun/git-cliff-action@v4
-        id: git-cliff
-        with:
-          config: cliff.toml
-          args: --latest --verbose
-        env:
-          OUTPUT: CHANGELOG.md
+        run: npx git-cliff --latest > ${{ github.workspace }}-CHANGELOG.txt
       - name: Print the changelog
         run: cat "${{ steps.git-cliff.outputs.changelog }}"
       - name: Archive Release
@@ -37,6 +34,6 @@ jobs:
       - name: Generate release note
         uses: softprops/action-gh-release@v2
         with:
-          body_path: "${{ steps.git-cliff.outputs.changelog }}"
+          body_path: ${{ github.workspace }}-CHANGELOG.txt
           generate_release_notes: true
           files: "dist/simple-sample-${{ env.VERSION }}.zip"
