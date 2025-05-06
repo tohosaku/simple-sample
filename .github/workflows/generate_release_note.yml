@@ -19,7 +19,7 @@ jobs:
       - name: Generate Libraries
         run: npm run build
       - name: Generate Release Note
-        run: npm run release_note > ${{ github.workspace }}-CHANGELOG.txt
+        run: npx conventional-changelog -u -r 1 -n .changelog.mjs > ${{ github.workspace }}-CHANGELOG.txt
       - name: Archive Release
         uses: thedoctor0/zip-release@0.7.6
         with:
