@@ -24,7 +24,7 @@ jobs:
       - name: Generate a changelog
         run: npx git-cliff --latest > ${{ github.workspace }}-CHANGELOG.txt
       - name: Print the changelog
-        run: cat "${{ steps.git-cliff.outputs.changelog }}"
+        run: cat ${{ github.workspace }}-CHANGELOG.txt
       - name: Archive Release
         uses: thedoctor0/zip-release@0.7.6
         with:
