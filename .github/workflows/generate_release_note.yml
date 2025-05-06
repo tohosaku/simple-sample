@@ -20,7 +20,7 @@ jobs:
         run: npm run build
       - name: Generate Release Note
         run: npm run release_note > ${{ github.workspace }}-CHANGELOG.txt
-       - name: Archive Release
+      - name: Archive Release
         uses: thedoctor0/zip-release@0.7.6
         with:
           type: 'zip'
